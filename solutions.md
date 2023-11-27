@@ -44,12 +44,11 @@ To design a CDC service for above solution , We would need to focus in further o
 - Any existing CDC of choice like event grids to trigger azure function or any logs , metadata ,etc that are capturing the changes for the objective.  Consider  systems like apache HUDI (open source) and delta lake.
 - Consider how the transformation logic will hold in various scenarios. 
 
-These discussions will help in designing the CDC, and validate the use of event hub, azure function triggers ,data factory and appropriate capturing to be done for the changes detected.
+These discussions will help in designing the proposal CDC, and validate the use of event hub, azure function triggers ,data factory and appropriate capturing to be done for the changes detected. In the proposal meeting, discussions need to be had around the requirements, benefits and feasibility, costs and resources etc.
 
-In particular for the solution mentioned above, we could proceed with :
+In particular for the solution mentioned above, we could proceed with a simple implementation proposal :
 1) Azure Blob Storage with Event Grid/Hub : Utilize Azure Blob Storage as the data source to enable Event Grid on the storage account to capture events for blob changes.
-2) Implementing an azure function to process change events, enable logging , monitoring triggered by Event Hub and subsequent storage of change data onto chosen target system.
-
+2) Implementing an azure function to process change events, enable logging , monitoring triggered by Event Hub and subsequent storage of change data onto HUDI.
 
 ## We value in the solution
 
