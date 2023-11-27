@@ -28,9 +28,9 @@ The python code is hosted on an azure function, its computational capabilities a
  
 Assumptions:
 - Both source and target are assumed in this design and are same (azure blob storage chosen for simplicity).
-- Azure account, subscriptions and costs are pre-approved .
+- Azure account, subscriptions and costs are pre-approved . Manageability and ease of deployment was considered.
 - The trigger mechanism for the service is assumed for simplicity to be from a blob trigger and to be in the form of a new csv file.
-- the service needs mimimal resources for computing the geohash.
+- the service needs mimimal resources for computing the geohash. The solution can be stateless.
 
 ## Evolution proposal
 
@@ -41,14 +41,14 @@ Explain how you would design such a service, as you would in a technical proposa
 To design a CDC service for above solution , We would need to focus in further on the objectives by discussing:
 - The  types of changes in the source system to capture for a better understanding of the requirements. whether new files are added or existing files are updated?
 - What triggers need to be fired on detecting these changes and what are the target systems. 
-- Any existing CDC of choice like event grids to trigger azure function or any logs , metadata ,etc that are capturing the changes for the objective. 
+- Any existing CDC of choice like event grids to trigger azure function or any logs , metadata ,etc that are capturing the changes for the objective.  Consider  systems like apache HUDI (open source) and delta lake.
 - Consider how the transformation logic will hold in various scenarios. 
 
-These discussions will help in designing the CDC and validate the use of event hub, azure function triggers ,data factory and appropriate capturing to be done of the changes detected.
+These discussions will help in designing the CDC, and validate the use of event hub, azure function triggers ,data factory and appropriate capturing to be done for the changes detected.
 
 In particular for the solution mentioned above, we could proceed with :
 1) Azure Blob Storage with Event Grid/Hub : Utilize Azure Blob Storage as the data source to enable Event Grid on the storage account to capture events for blob changes.
-2) Implementing an azure function to process change events, enable logging and monitoring triggered by Event Hub.
+2) Implementing an azure function to process change events, enable logging , monitoring triggered by Event Hub and subsequent storage of change data onto chosen target system.
 
 
 ## We value in the solution
