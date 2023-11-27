@@ -30,7 +30,7 @@ Assumptions:
 - Both source and target are assumed in this design and are same (azure blob storage chosen for simplicity).
 - Azure account, subscriptions and costs are pre-approved . Manageability and ease of deployment was considered.
 - The trigger mechanism for the service is assumed for simplicity to be from a blob trigger and to be in the form of a new csv file.
-- the service needs mimimal resources for computing the geohash. The solution can be stateless.
+- the service needs mimimal resources for computing the geohash. The solution can be stateless and needs to store only the deduplicated unique geohashes for the coordinates.
 
 ## Evolution proposal
 
